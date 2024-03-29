@@ -1,0 +1,75 @@
+﻿body {
+    background-color: red;
+}
+
+
+
+.page_centering {
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+    background-color: #D6F5D6;
+    border: 20px solid #adebad;
+}
+
+.picture_left, .form_login {
+    justify-content:stretch;
+    flex-grow: 1;
+    
+}
+
+.picture_left {
+    background-color: #D6E6F5;
+}
+
+.form_group{
+
+margin: 20px;
+}
+
+
+.button_result_selection {
+    display: flex;
+    margin: auto;
+    text-align: center;
+    background-color: #F5D6F5;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 6px
+}
+
+input:invalid + .button_result_selection {
+    background-color: #99ffff;
+}
+
+input:valid + .button_result_selection {
+    background-color: #98e698;
+}
+
+input:invalid + .button_result_selection:hover {
+    background-color: #98c1e6;
+}
+
+input:valid + .button_result_selection:hover {
+    background-color: #D6E6F5;
+}
+
+
+input:invalid + .button_result_selection:active {
+    background-color: #F5D6F5;
+}
+
+input:valid + .button_result_selection:active {
+    background-color: #F5E6D6;
+}
+
+
+.img_multihands {
+    max-width: 400px;
+    width: 400px;
+    height: inherit;
+}
+
