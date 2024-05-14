@@ -2,8 +2,16 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="introduction">
+    <p class="description-text">
+        Parenthood is a whirlwind of joy, but it can also be a challenge to keep track of your little one's routine.
+        That's where we come in! BabyTimeCalc is here to simplify your life and help you stay organized with our
+        intuitive time calculator designed specifically for your baby's needs.
+    </p>
+    <button class="button-style button-up">
+        @Html.ActionLink("Regime`s Calculator", "SendInformation")
+    </button>
 </div>
+
+
 

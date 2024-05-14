@@ -1,15 +1,18 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    ViewData["Title"] = "Send";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div class="first_information">
-    <div class="first_page_center">
-        <form action="/Home/SendInformation" method="post">
-            <div class="information">Please, choose your child`s birthday 	</div>
+
+<link href="Template2.styles.css" asp-append-version="true" type="text/css" rel="stylesheet" />
+
+
+    <form action="/Home/SendInformation" method="post" class="first_information">
+            <div class="information">Please, choose your child`s birthday</div>
             <div class="choose_date">
                 <input type="date" id="name" name="name" required minlength="8" maxlength="8" size="10" required pattern="\d{4}-\d{2}-\d{2} onfocus="(this.type='date')" />
             </div>
+
+
             <div class="information"> Please, select your child`s usual morning wake up time </div>
             <div class="choose_hour_minutes">
                 <input id="appt-time" type="time" name="appt-time" min="05:00" max="11:00" required />
@@ -18,6 +21,4 @@
                 Choose your child’s schedule
             </button>
         </form>
-    </div>
-</div>
         

@@ -37,7 +37,7 @@ public class HomeController : Controller
 
     [HttpPost]
     public IActionResult SendInformation(EnteringInformationModel dates)
-    {
+    { 
         return View("ResultsForChoose");
     }
 
