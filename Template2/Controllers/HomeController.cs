@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Template2.Models;
 using System.Text.RegularExpressions;
+using System;
 
 namespace Template2.Controllers;
 
@@ -37,9 +38,39 @@ public class HomeController : Controller
 
     [HttpPost]
     public IActionResult SendInformation(EnteringInformationModel dates)
-    { 
+    {
+        TimeSpan age = DateTime.Now - dates.dateBirth;
+       Params correspondingAge = Table.sleepTable[(int)(age.TotalHours / 30.4)];
+        int minCorrespondingSleeps = correspondingAge.minDaySleeps;
+        int maxCorrespondingSleeps = correspondingAge.maxDaySleeps;
+        double minNightGoToBed = correspondingAge.minNightSleep;
+        double maxNightGoToBed = correspondingAge.maxNightSleep;
+        TimeOnly minLongSleep = dates.timeWakeUp.AddHours(-minNightGoToBed);
+        TimeOnly maxLongSleep = dates.timeWakeUp.AddHours(-maxNightGoToBed);
+        double minNotSleep = 24 - minNightGoToBed - correspondingAge.minDayTimeSleepPeriod;
+        double maxNotSleep = 24 - maxNightGoToBed - correspondingAge.maxDayTimeSleepPeriod;
+        double minPeriod = minNotSleep / (minCorrespondingSleeps + 1);
+        double maxPeriod = maxNotSleep / (maxCorrespondingSleeps + 1);
+        for(int i = 0; i < minNotSleep; i++)
+        {
+        
+
+        }
+
+        for (int j = 0; j < maxNotSleep; j++)
+        {
+
+
+        }
+
+        TimeOnly minTimeToGoToBedDay = dates.timeWakeUp.AddHours(minPeriod);
+        TimeOnly maxTimeToGoToBedDay = dates.timeWakeUp.AddHours(maxPeriod);
+
+
         return View("ResultsForChoose");
     }
+
+
 
 
     public IActionResult LoginPage()
