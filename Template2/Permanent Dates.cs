@@ -21,10 +21,10 @@
             sleepTable[11] = new Params(2, 2, 10, 12, 12, 15, new TimeSpan(3, 30, 0), new TimeSpan(4, 30, 0), 2, 3);
             sleepTable[12] = new Params(1, 2, 10, 12, 12, 14, new TimeSpan(3, 30, 0), new TimeSpan(4, 30, 0), 2, 3);
             sleepTable[13] = new Params(1, 2, 10, 12, 12, 14, new TimeSpan(3, 30, 0), new TimeSpan(5, 0, 0), 2, 3);
-            sleepTable[16] = new Params(1, 1, 10, 11, 11, 14, new TimeSpan(5, 0, 0), new TimeSpan(6, 0, 0), 1, 3);
-            sleepTable[36] = new Params(1, 1, 10, 11, 11, 13, new TimeSpan(5, 0, 0), new TimeSpan(6, 0, 0), 1, 2);
-            sleepTable[48] = new Params(1, 1, 10, 11, 11, 13, new TimeSpan(6, 0, 0), new TimeSpan(6, 0, 0), 1, 2);
-            sleepTable[49] = new Params(1, 1, 9.5, 11, 10, 13, new TimeSpan(0, 0, 0), new TimeSpan(0, 0, 0), 1, 2);
+            sleepTable[16] = new Params(0, 1, 10, 11, 11, 14, new TimeSpan(5, 0, 0), new TimeSpan(6, 0, 0), 1, 3);
+            sleepTable[36] = new Params(0, 1, 10, 11, 11, 13, new TimeSpan(5, 0, 0), new TimeSpan(6, 0, 0), 1, 2);
+            sleepTable[48] = new Params(0, 1, 10, 11, 11, 13, new TimeSpan(6, 0, 0), new TimeSpan(6, 0, 0), 1, 2);
+            sleepTable[49] = new Params(0, 1, 9.5, 11, 10, 13, new TimeSpan(0, 0, 0), new TimeSpan(0, 0, 0), 1, 2);
             sleepTable[84] = new Params(0, 0, 10, 11, 10, 11, new TimeSpan(0, 0, 0), new TimeSpan(0, 0, 0), 0, 0);
             sleepTable[120] = new Params(0, 0, 9, 11, 9, 11, new TimeSpan(0, 0, 0), new TimeSpan(0, 0, 0), 0, 0);
             sleepTable[144] = new Params(0, 0, 9, 10, 9, 10, new TimeSpan(0, 0, 0), new TimeSpan(0, 0, 0), 0, 0);

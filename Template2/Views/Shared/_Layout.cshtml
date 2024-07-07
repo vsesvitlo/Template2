@@ -32,20 +32,16 @@
 <body>
     <header>
         <nav class="navbar">
-                <div class="logo-title">
-                    <!--asp:Image ID="Image1" runat="server" ImageUrl="~/images/logo_time_for_mom.png" /-->
-                    <img src="~/images/logo_time_for_mom.png" alt="logo" width="50px" height="50px" style="" />
-                </div>
-                <div class="links-header">
+            <div class="links-header">
+                <!--asp:Image ID="Image1" runat="server" ImageUrl="~/images/logo_time_for_mom.png" -->
+                <img class="navbar-brand" src="~/images/logo_time_for_mom.png" alt="logo" width="50px" height="50px" style="" />
+             
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Our Idea</a>
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Regime Calculator</a>
                  </div>
-                <div class="button-position">
-                    <button class="button-style-header">
+                 <button class="button-style">
                     @Html.ActionLink("Login", "LoginPage")
-                    </button>
-                </div>
-                 
+                 </button>  
         </nav>
     </header>
     <div class="container">

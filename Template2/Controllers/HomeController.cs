@@ -22,7 +22,8 @@ public class HomeController : Controller
 
     public IActionResult Privacy()
     {
-        return View();
+        DateRegulateModel RequiredDate = new DateRegulateModel();
+        return View(RequiredDate);
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -33,44 +34,105 @@ public class HomeController : Controller
 
     public IActionResult SendInformation()
     {
-        return View();
+        var tupleModel = new Tuple <DateRegulateModel, EnteringInformationModel>(new DateRegulateModel() { MinDate = DateTime.Now.AddYears(-7), MaxDate = DateTime.Now.AddDays(-1) }, (default));
+         return View(tupleModel);
+
     }
+    //<!--@model Tuple<EnteringInformationModel, DateRegulateModel>;-->
 
     [HttpPost]
     public IActionResult SendInformation(EnteringInformationModel dates)
     {
         TimeSpan age = DateTime.Now - dates.dateBirth;
-       Params correspondingAge = Table.sleepTable[(int)(age.TotalHours / 30.4)];
-        int minCorrespondingSleeps = correspondingAge.minDaySleeps;
-        int maxCorrespondingSleeps = correspondingAge.maxDaySleeps;
-        double minNightGoToBed = correspondingAge.minNightSleep;
-        double maxNightGoToBed = correspondingAge.maxNightSleep;
-        TimeOnly minLongSleep = dates.timeWakeUp.AddHours(-minNightGoToBed);
-        TimeOnly maxLongSleep = dates.timeWakeUp.AddHours(-maxNightGoToBed);
-        double minNotSleep = 24 - minNightGoToBed - correspondingAge.minDayTimeSleepPeriod;
-        double maxNotSleep = 24 - maxNightGoToBed - correspondingAge.maxDayTimeSleepPeriod;
-        double minPeriod = minNotSleep / (minCorrespondingSleeps + 1);
-        double maxPeriod = maxNotSleep / (maxCorrespondingSleeps + 1);
-        for(int i = 0; i < minNotSleep; i++)
+
+        int ageCalc = (int)(age.TotalDays / 30.4);
+        for (; ; ageCalc--)
         {
+            if (Table.sleepTable.ContainsKey(ageCalc))
+            {
+                break;
+            }
+        }
         
 
-        }
+        Params correspondingAge = Table.sleepTable[ageCalc];
+        int minCorrespondingSleeps = correspondingAge.minDaySleeps;
+        double minNightGoToBed = correspondingAge.minNightSleep;
+        TimeOnly minLongSleep = dates.timeWakeUp.AddHours(-minNightGoToBed);
+        double minNotSleep = 24 - minNightGoToBed - correspondingAge.minDayTimeSleepPeriod;
+        double minPeriod = minNotSleep / (minCorrespondingSleeps + 1);
+        double minPeriodSleepDay = correspondingAge.minDayTimeSleepPeriod / minCorrespondingSleeps;
+        TimeOnly wakeUpFirst = dates.timeWakeUp;
+        TimeOnly[] startMinSleeps = new TimeOnly[correspondingAge.minDayTimeSleepPeriod];
+        TimeOnly[] endMinSleeps = new TimeOnly[correspondingAge.minDayTimeSleepPeriod];
 
-        for (int j = 0; j < maxNotSleep; j++)
+        int maxCorrespondingSleeps = correspondingAge.maxDaySleeps;
+        double maxNightGoToBed = correspondingAge.maxNightSleep;
+        TimeOnly maxLongSleep = dates.timeWakeUp.AddHours(-maxNightGoToBed);
+        double maxNotSleep = 24 - maxNightGoToBed - correspondingAge.maxDayTimeSleepPeriod;
+        double maxPeriod = maxNotSleep / (maxCorrespondingSleeps + 1);
+        double maxPeriodSleepDay = correspondingAge.maxDayTimeSleepPeriod / maxCorrespondingSleeps;
+        TimeOnly[] startMaxSleeps = new TimeOnly[correspondingAge.maxDayTimeSleepPeriod];
+        TimeOnly[] endMaxSleeps = new TimeOnly[correspondingAge.maxDayTimeSleepPeriod];
+
+        for (int i = 0; i < correspondingAge.minDayTimeSleepPeriod; i++)
+            {
+                if (i == 0)
+                startMinSleeps[i] = wakeUpFirst.AddHours(minPeriod);
+                else
+                startMinSleeps[i] = endMinSleeps[i - 1].AddHours(minPeriod);
+
+            endMinSleeps[i] = startMinSleeps[i].AddHours(minPeriodSleepDay);
+            }
+
+        for (int i = 0; i < correspondingAge.maxDayTimeSleepPeriod; i++)
         {
+            if (i == 0)
+                startMaxSleeps[i] = wakeUpFirst.AddHours(maxPeriod);
+            else
+                startMaxSleeps[i] = endMaxSleeps[i - 1].AddHours(maxPeriod);
 
-
+            endMaxSleeps[i] = startMaxSleeps[i].AddHours(maxPeriodSleepDay);
         }
 
         TimeOnly minTimeToGoToBedDay = dates.timeWakeUp.AddHours(minPeriod);
         TimeOnly maxTimeToGoToBedDay = dates.timeWakeUp.AddHours(maxPeriod);
 
+        TimeOnly minTimeToGoToBedNight = dates.timeWakeUp.AddHours(minNightGoToBed);
+        TimeOnly maxTimeToGoToBedNight = dates.timeWakeUp.AddHours(maxNightGoToBed);
 
-        return View("ResultsForChoose");
+        List<ActivitiesModel> ActivitiesPersonalMin = new List<ActivitiesModel>();
+
+        ActivitiesPersonalMin.Add(new ActivitiesModel() { Activity = "Wake up", Time = wakeUpFirst });
+        for (int i = 0; i < startMinSleeps.Length; i++)
+        {
+            ActivitiesPersonalMin.Add(new ActivitiesModel() { Activity = "Day time sleeping", Time = startMinSleeps[i] });
+            ActivitiesPersonalMin.Add(new ActivitiesModel() { Activity = "Activity after daytime sleeping", Time = endMinSleeps[i] });
+
+        }
+
+        ActivitiesPersonalMin.Add(new ActivitiesModel() { Activity = "Night time sleeping", Time = minLongSleep });
+
+
+        List<ActivitiesModel> ActivitiesPersonalMax = new List<ActivitiesModel>();
+
+        ActivitiesPersonalMax.Add(new ActivitiesModel() { Activity = "Wake up", Time = wakeUpFirst });
+        for (int i = 0; i < startMaxSleeps.Length; i++)
+        {
+            ActivitiesPersonalMax.Add(new ActivitiesModel() { Activity = "Day time sleeping", Time = startMaxSleeps[i] });
+            ActivitiesPersonalMax.Add(new ActivitiesModel() { Activity = "Activity after daytime sleeping", Time = endMaxSleeps[i] });
+
+        }
+
+        ActivitiesPersonalMax.Add(new ActivitiesModel() { Activity = "Night time sleeping", Time = maxLongSleep });
+
+
+        List<ActivitiesModel>[] results = new List<ActivitiesModel>[] { ActivitiesPersonalMin, ActivitiesPersonalMax };
+
+        return View("ResultsForChoose", results);
     }
 
-
+    
 
 
     public IActionResult LoginPage()
