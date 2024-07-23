@@ -118,5 +118,15 @@ h1, h2, h3, h4, h5, h6 {
 
 
     .a-style:hover {
-        background-color: #01786F;
+        background-color: #E97451;
+        color: #FFFFFF;
+        forced-color-adjust: #FFFFFF; /*???*/
+    }
+
+    .a-style:focus {
+        border: 2px solid #FFFFFF;
+    }
+
+    .a-style:active {
+        background-color: #C9A0DC;
     }

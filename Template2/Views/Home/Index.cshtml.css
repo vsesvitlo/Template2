@@ -38,3 +38,13 @@ p {
 .button-up {
     justify-content: flex-start;
 }
+
+    .button-up:hover {
+        background-color: #FED85D;
+    }
+    .button-up:focus {
+        border: 2px solid #FFFFFF;
+    }
+    .button-up:active {
+        background-color: #C9A0DC;
+    }

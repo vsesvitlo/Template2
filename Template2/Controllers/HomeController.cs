@@ -22,8 +22,8 @@ public class HomeController : Controller
 
     public IActionResult Privacy()
     {
-        DateRegulateModel RequiredDate = new DateRegulateModel();
-        return View(RequiredDate);
+        
+        return View();
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -34,9 +34,11 @@ public class HomeController : Controller
 
     public IActionResult SendInformation()
     {
-        var tupleModel = new Tuple <DateRegulateModel, EnteringInformationModel>(new DateRegulateModel() { MinDate = DateTime.Now.AddYears(-7), MaxDate = DateTime.Now.AddDays(-1) }, (default));
-         return View(tupleModel);
-
+        EnteringInformationModel limits = new EnteringInformationModel();
+        limits.MinDate = DateTime.Now.AddYears(-7);
+        limits.MaxDate = DateTime.Now.AddDays(-1);
+         return View(limits);
+        
     }
     //<!--@model Tuple<EnteringInformationModel, DateRegulateModel>;-->
 
