@@ -9,42 +9,13 @@
 }
 
 p {
-    font-style: Regular;
     font-size: 20px;
 }
 
 .description-text {
-    font-style: Regular;
     font-size: 20px;
     justify-content: space-around;
     padding: 80px 110px 80px 110px;
     font-stretch: expanded;
     color: #FFFFFF;
 }
-
-.button-style {
-    background-color: #FC80A5;
-    border-radius: 10px;
-    margin: auto;
-    text-align: center;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-decoration: none;
-    font-style: Regular;
-    font-size: 16px;
-    
-}
-.button-up {
-    justify-content: flex-start;
-}
-
-    .button-up:hover {
-        background-color: #FED85D;
-    }
-    .button-up:focus {
-        border: 2px solid #FFFFFF;
-    }
-    .button-up:active {
-        background-color: #C9A0DC;
-    }

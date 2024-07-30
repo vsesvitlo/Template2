@@ -7,14 +7,14 @@
 
 
 <div class="third_page">
+    <div class="select">
+        Let’s select preferred schedule
+    </div>
     <div class="third_page_center">
-        <div class="select">
-            Let’s select preferred schedule
-        </div>
+        
         <div class="variants">
-            <div class="variant_1">
-                <div class="tablesheet">
-                    <table class="list_activities">
+             <div class="tablesheet">
+                    <table class="list-activities">
                         
                         @foreach( var item in Model.ToList()[0])
                         {
@@ -25,15 +25,15 @@
                         }
                         
                     </table>
-
-                </div>
-                <button class="button_result_selection">
+                    </div>
+                <button class="button-result-selection">
                     Select
                 </button>
+            
             </div>
-            <div class="variant_2">
+            <div class="variants">
                 <div class="tablesheet">
-                    <table class="list_activities">
+                    <table class="list-activities"> 
                         @foreach (var item in Model.ToList()[1])
                         {
                             <tr>
@@ -44,10 +44,11 @@
                     </table>
                     
                 </div>
-                <button class="button_result_selection">
+                <button class="button-result-selection">
                     Select
+               
                 </button>
             </div>
-        </div>
+        
     </div>
 </div>

@@ -1,4 +1,5 @@
 ﻿* {
+    font-family: Regular;
     padding: 0;
     margin: 0;
     border: 0;
@@ -27,21 +28,21 @@ html, body {
     width: 100%;
     font-style: 100%;
     line-height: 1;
-    font-style: 14px;
+    font-style: 16px;
     -ms-text-size-adjust: 100%;
     -moz-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
 }
 
-input, button, textarea {
-    font-family: inherit;
+input, button, textarea, a {
+    font-family: Arial;
 }
 
     input::-ms-clear {
         display: none;
     }
 
-button {
+button, a {
     cursor: pointer;
 }
 
@@ -51,6 +52,7 @@ button {
     }
 
 a, a:visited {
+    font-family: Arial;
     text-decoration: none;
 }
 
@@ -79,54 +81,14 @@ h1, h2, h3, h4, h5, h6 {
     background-color: #29AB87;
     margin: 0 0 0 0;
     padding: 0 110px 0 110px;
+    align-items: center;
 }
 
 
-.links-header{
-    display: flex;
-    justify-content: space-around;
-}
 .navbar-brand{
     color: #FFFFFF;
     position: center;
-    font-family: Regular;
     font-size: 16px;
-
+ 
 }
 
-
-.links-header{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-grow: 4;
-}
-
-.a-style {
-    display: flex;
-    margin: auto;
-    text-align: center;
-    background-color: #94b8b8;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-decoration: none;
-    font-family: Regular;
-    font-size: 16px;
-    border-radius: 10px;
-}
-
-
-    .a-style:hover {
-        background-color: #E97451;
-        color: #FFFFFF;
-        forced-color-adjust: #FFFFFF; /*???*/
-    }
-
-    .a-style:focus {
-        border: 2px solid #FFFFFF;
-    }
-
-    .a-style:active {
-        background-color: #C9A0DC;
-    }

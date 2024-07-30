@@ -19,6 +19,31 @@
         color: #FFFFFF;
     }
 
+    .a-send-information {
+        background-color: #FC80A5;
+        border-radius: 10px;
+        margin: auto;
+        text-align: center;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-decoration: none;
+        font-family: Arial;
+        font-size: 16px;
+    }
+
+    .a-send-information {
+        justify-content: flex-start;
+    }
+
+    .a-send-information:hover {
+            background-color: #FED85D;
+        }
+
+    .a-send-information:active {
+            background-color: #C9A0DC;
+        }
+
 </style>
 <div class="introduction">
     <p class="description-text">
@@ -26,9 +51,8 @@
         That's where we come in! BabyTimeCalc is here to simplify your life and help you stay organized with our
         intuitive time calculator designed specifically for your baby's needs.
     </p>
-    <button class="button-style button-up">
-        @Html.ActionLink("Regime`s Calculator", "SendInformation")
-    </button>
+        @Html.ActionLink("Regime`s Calculator", "SendInformation", "", new object { }, new { @class = "a-send-information" })
+      
 </div>
 
 

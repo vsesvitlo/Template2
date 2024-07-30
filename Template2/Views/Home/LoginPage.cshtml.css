@@ -45,9 +45,6 @@
         background-color: #76D7EA;
     }
 
-    .button-style:focus {
-    border: 2px solid #FFFFFF;
-}
 
     .button-style:active {
     background-color: #C9A0DC;

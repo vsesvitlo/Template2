@@ -19,6 +19,33 @@
        .navbar-brand:hover{
         text-decoration: underline;
        }
+
+        .a-style {
+            display: flex;
+            text-align: center;
+            background-color: #94b8b8;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-decoration: none;
+            font-size: 16px;
+            border-radius: 10px;
+        }
+
+            .a-style:hover {
+                background-color: #E97451;
+            }
+
+
+            .a-style:active {
+                background-color: #C9A0DC;
+                color: #FFFFFF;
+            }
+
+            .a-style a {
+                color: #FFFFFF;
+                font-size: 32px;
+            }
     </style>
     <environment include="Development">
         <link href="Template2.styles.css" asp-append-version="true" type="text/css" rel="stylesheet" />
@@ -32,16 +59,14 @@
 <body>
     <header>
         <nav class="navbar">
-            <div class="links-header">
+            
                 <!--asp:Image ID="Image1" runat="server" ImageUrl="~/images/logo_time_for_mom.png" -->
                 <img class="navbar-brand" src="~/images/logo_time_for_mom.png" alt="logo" width="50px" height="50px" style="" />
-             
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Our Idea</a>
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Regime Calculator</a>
-                 </div>
-                 <div class="a-style">
-                @Html.ActionLink("Login", "LoginPage")
-                 </div>
+             
+                @Html.ActionLink("Login", "LoginPage", "", new object { }, new { @class = "a-style" })
+          
         </nav>
     </header>
     <div class="container">
