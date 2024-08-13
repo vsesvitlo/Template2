@@ -197,5 +197,11 @@ public class HomeController : Controller
         CodesForCountries.Add(new PhoneBaseModel() { CodeCountry = +44, Country = "Great Britain" });
         return View(CodesForCountries);
     }
+
+    [HttpPost]
+    public IActionResult PreFinalPage(List <ActivitiesModel> ChooseActivities)
+    {
+        return View(ChooseActivities);
+    }
 }
 
