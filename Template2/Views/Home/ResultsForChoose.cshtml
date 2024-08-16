@@ -31,7 +31,10 @@
         Let’s select preferred schedule
     </div>
     <div class="third_page_center">
-        
+ 
+
+
+
         <div class="variants">
              <div class="tablesheet">
                     <table class="list-activities">
@@ -46,10 +49,17 @@
                         
                     </table>
                     </div>
-            @Html.
-            
-            ActionLink("Select", "PreFinalPage", "HomeController", Model.ToList()[0], new { @class = "button-result-selection" })
-            </div>
+            <form asp-action="PreFinalPage" method="post">
+
+                @for (int i = 0; i < Model.ToList()[0].Count; i++)
+                {
+                    <input type="hidden" name="ActivitiesList[@i].Activity" value="@Model.ToList()[0][i].Activity" />
+                    <input type="hidden" name="ActivitiesList[@i].Time" value="@Model.ToList()[0][i].Time.ToString()" />
+                }
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
             <div class="variants">
                 <div class="tablesheet">
                     <table class="list-activities"> 
@@ -63,8 +73,17 @@
                     </table>
                     
                 </div>
-            @Html.ActionLink("Select", "PreFinalPage", "HomeController", Model.ToList()[1], new { @class = "button-result-selection" })
-            </div>
+            <form asp-action="PreFinalPage" method="post">
+
+                @for (int i = 0; i < Model.ToList()[1].Count; i++)
+                {
+                    <input type="hidden" name="ActivitiesList[@i].Activity" value="@Model.ToList()[1][i].Activity" />
+                    <input type="hidden" name="ActivitiesList[@i].Time" value="@Model.ToList()[1][i].Time.ToString()" />
+                }
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
         
     </div>
 </div>
