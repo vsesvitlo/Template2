@@ -5,7 +5,19 @@
 }
 
 <h1>PreFinalPage</h1>
+<div class="tablesheet">
+    <table class="list-activities">
 
+        @foreach (var item in Model.ToList())
+        {
+            <tr>
+                <td>@Html.DisplayFor(m => item.Activity)</td>
+                <td>@Html.DisplayFor(m => item.Time)</td>
+            </tr>
+        }
+
+    </table>
+</div>
 <p>
     <a asp-action="Create">Create New</a>
 </p>

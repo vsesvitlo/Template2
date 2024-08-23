@@ -201,6 +201,7 @@ public class HomeController : Controller
     [HttpPost]
     public IActionResult PreFinalPage(List <ActivitiesModel> ChooseActivities)
     {
+        Console.WriteLine(ChooseActivities.Count);
         return View(ChooseActivities);
     }
 }
