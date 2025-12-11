@@ -51,10 +51,12 @@
              </div>
             <form asp-action="PreFinalPage" method="post">
 
+
+
                 @for (int i = 0; i < Model.ToList()[0].Count; i++)
                 {
-                    <input type="hidden" name="ActivitiesList[@i].Activity" value="@Model.ToList()[0][i].Activity" />
-                    <input type="hidden" name="ActivitiesList[@i].Time" value="@Model.ToList()[0][i].Time.ToString()" />
+                    <input type="text" name="ChooseActivities[@i].Activity" value="@Model.ToList()[0][i].Activity" />
+                    <input type="time" name="ChooseActivities[@i].Time" value="@Model.ToList()[0][i].Time.ToString()" />
                 }
 
                 <button type="submit">Submit</button>
@@ -77,8 +79,8 @@
 
                 @for (int i = 0; i < Model.ToList()[1].Count; i++)
                 {
-                    <input type="hidden" name="ActivitiesList[@i].Activity" value="@Model.ToList()[1][i].Activity" />
-                    <input type="hidden" name="ActivitiesList[@i].Time" value="@Model.ToList()[1][i].Time.ToString()" />
+                    <input type="hidden" name="ChooseActivities[@i].Activity" value="@Model.ToList()[1][i].Activity" />
+                    <input type="hidden" name="ChooseActivities[@i].Time" value="@Model.ToList()[1][i].Time.ToString()" />
                 }
 
                 <button type="submit">Submit</button>
